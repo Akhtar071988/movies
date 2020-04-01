@@ -1,4 +1,4 @@
-package com.galvanize.movies;
+package com.galvanize;
 
 import static org.junit.jupiter.api.Assertions.*;
 

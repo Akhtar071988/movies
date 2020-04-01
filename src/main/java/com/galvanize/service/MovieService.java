@@ -1,4 +1,4 @@
-package com.galvanize;
+package com.galvanize.service;
 
 import org.springframework.stereotype.Service;
 
