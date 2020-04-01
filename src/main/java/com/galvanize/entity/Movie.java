@@ -1,4 +1,4 @@
-package com.galvanize.movies;
+package com.galvanize.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
