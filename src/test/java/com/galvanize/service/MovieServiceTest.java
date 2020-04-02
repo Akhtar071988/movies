@@ -58,7 +58,15 @@ public class MovieServiceTest {
 
     @Test
     public void updateMovie(){
-        Movie expected = new Movie(1L, "tt0241527", "Emma Watson", "Chris Columbus", "Harry Potter and the Deathly Hallows: Part 1", "2010", LocalDate.of(2010, 11, 19));
+        Movie existing = new Movie(1L, "tt0926084", "Emma Watson", "David Yates", "Harry Potter and the Deathly Hallows: Part 1", "2010", LocalDate.of(2010, 11, 19));
+        Movie expected = new Movie(existing.getImdbId(), existing.getDirector(), existing.getTitle(), existing.getYear(), existing.getLocalDate());
+        when(movieRepository.findById(anyLong())).thenReturn(Optional.of(existing));
+        assertEquals(expected, movieService.update(existing.getImdbId(), existing.getDirector(), existing.getTitle(), existing.getYear(), existing.getLocalDate(), updateMovie()));
+    }
 
+    @Test
+    public void deleteMovie(){
+        when(movieRepository.deleteById(anyLong())).thenReturn(true);
+        assertTrue(movieService.deleteById(1L));
     }
 }
