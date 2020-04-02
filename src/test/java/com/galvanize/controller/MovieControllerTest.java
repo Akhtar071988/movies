@@ -11,8 +11,11 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -38,5 +41,17 @@ public class MovieControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.movieId").value(expected.getMovieId()));
 
+    }
+
+    @Test
+    public void getAllMovies() throws Exception {
+        Movie expected = new Movie();
+        expected.setMovieId(1L);
+        ArrayList<Movie> movie = new ArrayList<>();
+        movie.add(expected);
+        when(movieService.getAllMovies()).thenReturn(movie);
+        mvc.perform(get("/api/movie"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].movieId").value(expected.getMovieId()));
     }
 }
