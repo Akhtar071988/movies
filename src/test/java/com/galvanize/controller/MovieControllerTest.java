@@ -2,6 +2,7 @@ package com.galvanize.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.galvanize.entity.Movie;
+import com.galvanize.repository.MovieRepository;
 import com.galvanize.service.MovieService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,17 @@ public class MovieControllerTest {
         expected.setMovieId(1L);
         when(movieService.findByImdbId("tt0241527")).thenReturn(expected);
         mvc.perform(get("/api/movies/imdbId/tt0241527"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.imdbId").value(expected.getImdbId()))
+                .andExpect(jsonPath("$.movieId").value(expected.getMovieId()));
+    }
+
+    @Test
+    public void getMovieByimdbIdQuery() throws Exception {
+        Movie expected = new Movie();
+        expected.setMovieId(1L);
+        when(movieService.findByImdbId("tt0241527")).thenReturn(expected);
+        mvc.perform(get("/api/movies/imdb?imdbId=tt0241527"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.imdbId").value(expected.getImdbId()))
                 .andExpect(jsonPath("$.movieId").value(expected.getMovieId()));

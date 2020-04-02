@@ -10,5 +10,4 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     Movie findByImdbId(String imdbId);
     Movie findByTitle(String title);
     boolean deleteById(long movieId);
-    List<Movie> updateMovieWithStarRating (Integer rating);
 }
