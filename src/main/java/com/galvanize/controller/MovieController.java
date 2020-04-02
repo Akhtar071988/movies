@@ -27,11 +27,16 @@ public class MovieController {
 
     @GetMapping("/imdbId/{imdbId}")
     public Movie getMoviesByimdbId(@PathVariable String imdbId){
-        return movieService.findByImdbId(imdbId);
+        return movieService.findMovieByImdbId(imdbId);
     }
 
     @GetMapping("/imdb")
     public Movie getMoviesByimdbQuery(@RequestParam String imdbId){
-        return movieService.findByImdbId(imdbId);
+        return movieService.findMovieByImdbId(imdbId);
+    }
+
+    @GetMapping("/title/{title}")
+    public Movie getAllMoviesByTitle(@PathVariable String title){
+        return movieService.findAllMoviesByTitle(title);
     }
 }

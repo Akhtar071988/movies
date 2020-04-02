@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
     Movie findByImdbId(String imdbId);
-    Movie findByTitle(String title);
+    Movie findAllMoviesByTitle(String title);
     boolean deleteById(long movieId);
 }

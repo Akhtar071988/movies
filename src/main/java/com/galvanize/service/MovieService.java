@@ -26,12 +26,12 @@ public class MovieService {
     }
 
 
-    public Movie findByImdbId(String imdbId) {
+    public Movie findMovieByImdbId(String imdbId) {
         return movieRepository.findByImdbId(imdbId);
     }
 
     public Movie findAllMoviesByTitle(String title) {
-        return movieRepository.findByTitle(title);
+        return movieRepository.findAllMoviesByTitle(title);
     }
 
     public Movie updateMovieWithStarRating(Integer rating) {

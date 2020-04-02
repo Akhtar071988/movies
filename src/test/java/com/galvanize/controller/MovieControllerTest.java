@@ -63,7 +63,7 @@ public class MovieControllerTest {
     public void getMovieByimdbId() throws Exception {
         Movie expected = new Movie();
         expected.setMovieId(1L);
-        when(movieService.findByImdbId("tt0241527")).thenReturn(expected);
+        when(movieService.findMovieByImdbId("tt0241527")).thenReturn(expected);
         mvc.perform(get("/api/movies/imdbId/tt0241527"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.imdbId").value(expected.getImdbId()))
@@ -74,10 +74,21 @@ public class MovieControllerTest {
     public void getMovieByimdbIdQuery() throws Exception {
         Movie expected = new Movie();
         expected.setMovieId(1L);
-        when(movieService.findByImdbId("tt0241527")).thenReturn(expected);
+        when(movieService.findMovieByImdbId("tt0241527")).thenReturn(expected);
         mvc.perform(get("/api/movies/imdb?imdbId=tt0241527"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.imdbId").value(expected.getImdbId()))
+                .andExpect(jsonPath("$.movieId").value(expected.getMovieId()));
+    }
+
+    @Test
+    public void getAllMoviesByTitle() throws Exception {
+        Movie expected = new Movie();
+        expected.setMovieId(1L);
+        when(movieService.findAllMoviesByTitle("Harry Potter and the Sorcerer's Stone")).thenReturn(expected);
+        mvc.perform(get("/api/movies/title/Harry Potter and the Sorcerer's Stone"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.title").value(expected.getTitle()))
                 .andExpect(jsonPath("$.movieId").value(expected.getMovieId()));
     }
 }
