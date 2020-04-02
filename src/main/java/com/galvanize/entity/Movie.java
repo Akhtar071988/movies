@@ -15,35 +15,35 @@ public class Movie {
     private String imdbId;
     @Column(name = "actors")
     private String actors;
-    @Column(name = "director")
-    private String diretor;
-    @Column(name = "title")
+    @Column(length = 50)
+    private String director;
+    @Column(length = 300)
     private String title;
-    @Column(name = "year")
+    @Column(length = 10)
     private String year;
-    @Column(name = "released")
-    LocalDate localDate;
+    @Column(length = 15)
+    LocalDate released;
 
     public Movie() {
     }
 
-    public Movie(long movieId, String imdbId, String actors, String director, String title, String year, LocalDate localDate){
+    public Movie(long movieId, String imdbId, String actors, String director, String title, String year, LocalDate released){
         this.movieId = movieId;
         this.imdbId = imdbId;
         this.actors = actors;
-        this.diretor = director;
+        this.director = director;
         this.title = title;
         this.year = year;
-        this.localDate = localDate;
+        this.released = released;
     }
 
-    public Movie(String imdbId, String actors, String director, String title, String year, LocalDate localDate){
+    public Movie(String imdbId, String actors, String director, String title, String year, LocalDate released){
         this.imdbId = imdbId;
         this.actors = actors;
-        this.diretor = director;
+        this.director = director;
         this.title = title;
         this.year = year;
-        this.localDate = localDate;
+        this.released = released;
     }
 
     public long getMovieId() {
@@ -70,12 +70,12 @@ public class Movie {
         this.actors = actors;
     }
 
-    public String getDiretor() {
-        return diretor;
+    public String getDirector() {
+        return director;
     }
 
-    public void setDiretor(String diretor) {
-        this.diretor = diretor;
+    public void setDirector(String director) {
+        this.director = director;
     }
 
     public String getTitle() {
@@ -95,11 +95,11 @@ public class Movie {
     }
 
     public LocalDate getLocalDate() {
-        return localDate;
+        return released;
     }
 
     public void setLocalDate(LocalDate localDate) {
-        this.localDate = localDate;
+        this.released = released;
     }
 
     @Override
@@ -110,22 +110,22 @@ public class Movie {
         return movieId == movie.movieId &&
                 Objects.equals(imdbId, movie.imdbId) &&
                 Objects.equals(actors, movie.actors) &&
-                Objects.equals(diretor, movie.diretor) &&
+                Objects.equals(director, movie.director) &&
                 Objects.equals(title, movie.title) &&
                 Objects.equals(year, movie.year) &&
-                Objects.equals(localDate, movie.localDate);
+                Objects.equals(released, movie.released);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(movieId, imdbId, actors, diretor, title, year, localDate);
+        return Objects.hash(movieId, imdbId, actors, director, title, year, released);
     }
 
     public void update(Movie updateMovie){
         if(updateMovie.getImdbId()!=null)this.setImdbId(updateMovie.getImdbId());
         if(updateMovie.getActors()!=null)this.setActors(updateMovie.getActors());
         if(updateMovie.getMovieId()!=0)this.setMovieId(updateMovie.getMovieId());
-        if(updateMovie.getDiretor()!=null)this.setDiretor(updateMovie.getDiretor());
+        if(updateMovie.getDirector()!=null)this.setDirector(updateMovie.getDirector());
         if(updateMovie.getTitle()!=null)this.setTitle(updateMovie.getTitle());
         if(updateMovie.getYear()!=null)this.setYear(updateMovie.getYear());
         if(updateMovie.getLocalDate()!=null)this.setLocalDate(updateMovie.getLocalDate());

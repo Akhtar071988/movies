@@ -13,7 +13,7 @@ public class MovieControllerTest {
     @Autowired
     MockMvc mvc;
 
-    ObjectMapper mapper = new ObjectMapper();
+    ObjectMapper objectMapper = new ObjectMapper();
 
     @Autowired
     MovieService movieService;
