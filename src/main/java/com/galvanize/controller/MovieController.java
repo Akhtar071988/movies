@@ -1,14 +1,13 @@
 package com.galvanize.controller;
 
 import com.galvanize.entity.Movie;
-import com.galvanize.repository.MovieRepository;
 import com.galvanize.service.MovieService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/movie")
+@RequestMapping("/api/movies")
 public class MovieController {
     MovieService movieService;
 
@@ -24,5 +23,10 @@ public class MovieController {
     @GetMapping
     public List<Movie> getAllMovies(){
         return movieService.getAllMovies();
+    }
+
+    @GetMapping("/imdbId")
+    public Movie getMoviesByimdbId(@RequestParam String imdbId){
+        return movieService.findByImdbId(imdbId);
     }
 }

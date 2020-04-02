@@ -30,14 +30,14 @@ public class MovieService {
         return movieRepository.findByImdbId(imdbId);
     }
 
-    public Movie findByTitle(String title) {
+    public Movie findAllMoviesByTitle(String title) {
         return movieRepository.findByTitle(title);
     }
 
-    public Movie updateMovieById(String imdbId, Movie movie) {
-        Movie newMovie = findByImdbId(imdbId);
-        newMovie.update(movie);
-        return createMovie(newMovie);
+    public Movie updateMovieWithStarRating(Integer rating) {
+        Movie newMovie = updateMovieWithStarRating(rating);
+        newMovie.update(newMovie);
+        return  createMovie(newMovie);
     }
 
     public boolean deleteById (long movieId){

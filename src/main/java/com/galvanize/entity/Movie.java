@@ -47,6 +47,10 @@ public class Movie {
     }
 
     public Movie() {
+
+    }
+
+    public Movie(long l, String tt0241527, String emma_watson, String chris_columbus, String s, int i, int i1, LocalDate of) {
     }
 
     public long getMovieId() {
