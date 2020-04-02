@@ -13,7 +13,7 @@ public class Movie {
     private long movieId;
     @Column(name = "imdbid")
     private String imdbId;
-    @Column(name = "actors")
+    @Column(length = 50)
     private String actors;
     @Column(length = 50)
     private String director;
@@ -24,7 +24,7 @@ public class Movie {
     @Column(length = 15)
     LocalDate released;
 
-    public Movie(String imdbId, String director, String title, String year, LocalDate localDate) {
+    public Movie(String imdbId, String director, String title, Integer year, LocalDate localDate) {
     }
 
     public Movie(long movieId, String imdbId, String actors, String director, String title, Integer year, LocalDate released){

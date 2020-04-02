@@ -1,6 +1,6 @@
 package com.galvanize.service;
 
-import com.galvanize.MovieRepository;
+import com.galvanize.repository.MovieRepository;
 import com.galvanize.entity.Movie;
 import org.springframework.stereotype.Service;
 
@@ -34,16 +34,11 @@ public class MovieService {
         return movieRepository.findByTitle(title);
     }
 
-    public Movie update(String imdbId, String director, String title, Integer year, LocalDate released){
-        Movie existing = movieRepository.findById();
+    public Movie updateMovieById(String imdbId, Movie movie) {
+        Movie newMovie = findByImdbId(imdbId);
+        newMovie.update(movie);
+        return createMovie(newMovie);
     }
-
-//    public Joke update(long jokeId, Joke updateJoke) {
-//        Joke preUpdateJoke = jpaJokeRepository.findById(jokeId).orElse(null);
-//        if(preUpdateJoke==null)return null;
-//        preUpdateJoke.update(updateJoke);
-//        return preUpdateJoke;
-//    }
 
     public boolean deleteById (long movieId){
         return movieRepository.deleteById(movieId);
