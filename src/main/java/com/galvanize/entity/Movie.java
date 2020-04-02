@@ -130,4 +130,17 @@ public class Movie {
         if(updateMovie.getYear()!=null)this.setYear(updateMovie.getYear());
         if(updateMovie.getLocalDate()!=null)this.setLocalDate(updateMovie.getLocalDate());
     }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "movieId=" + movieId +
+                ", imdbId='" + imdbId + '\'' +
+                ", actors='" + actors + '\'' +
+                ", director='" + director + '\'' +
+                ", title='" + title + '\'' +
+                ", year='" + year + '\'' +
+                ", released=" + released +
+                '}';
+    }
 }
