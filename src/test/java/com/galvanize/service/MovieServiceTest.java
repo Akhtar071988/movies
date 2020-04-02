@@ -50,9 +50,15 @@ public class MovieServiceTest {
     }
 
     @Test
-    public void getMovieByImdbId(){
+    public void getMovieByTitle(){
         Movie expected = new Movie(1L, "tt0241527", "Emma Watson", "Chris Columbus", "Harry Potter and the Sorcerer's Stone", "2001", LocalDate.of(2001, 11, 16));
-        when(movieRepository.findByImdbId(anyString())).thenReturn(expected);
-        assertEquals(expected, movieService.findByImdbId("tt0241527"));
+        when(movieRepository.findByTitle(anyString())).thenReturn(expected);
+        assertEquals(expected, movieService.findByTitle("Harry Potter and the Sorcerer's Stone"));
+    }
+
+    @Test
+    public void updateMovie(){
+        Movie expected = new Movie(1L, "tt0241527", "Emma Watson", "Chris Columbus", "Harry Potter and the Deathly Hallows: Part 1", "2010", LocalDate.of(2010, 11, 19));
+
     }
 }

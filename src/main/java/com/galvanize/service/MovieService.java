@@ -27,4 +27,8 @@ public class MovieService {
     public Movie findByImdbId(String imdbId) {
         return movieRepository.findByImdbId(imdbId);
     }
+
+    public Movie findByTitle(String title) {
+        return movieRepository.findByTitle(title);
+    }
 }
