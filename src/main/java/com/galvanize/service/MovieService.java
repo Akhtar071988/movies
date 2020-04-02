@@ -5,8 +5,6 @@ import com.galvanize.entity.Movie;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.criteria.CriteriaBuilder;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,8 +32,8 @@ public class MovieService {
         return movieRepository.findAllMoviesByTitle(title);
     }
 
-    public Movie updateMovieWithStarRating(Integer rating) {
-        Movie newMovie = updateMovieWithStarRating(rating);
+    public Movie updateMovieWithStarRating(Integer rating, Movie updateMovieWithStarRating) {
+        Movie newMovie = updateMovieWithStarRating(rating, updateMovieWithStarRating);
         newMovie.update(newMovie);
         return  createMovie(newMovie);
     }

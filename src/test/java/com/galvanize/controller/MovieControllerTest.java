@@ -2,9 +2,9 @@ package com.galvanize.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.galvanize.entity.Movie;
-import com.galvanize.repository.MovieRepository;
 import com.galvanize.service.MovieService;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,11 +15,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -90,5 +89,24 @@ public class MovieControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.title").value(expected.getTitle()))
                 .andExpect(jsonPath("$.movieId").value(expected.getMovieId()));
+    }
+
+//    @Test
+//    public void updateMovieWithStarRating() throws Exception {
+//        Movie expected = new Movie();
+//        expected.setMovieId(1L);
+//        String json = objectMapper.writeValueAsString(expected);
+//        when(movieService.updateMovieWithStarRating(anyInt()).thenReturn(expected));
+//        mvc.perform(patch("/api/movies/1").content(json).contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$").value(expected));
+//    }
+
+    @Test
+    public void deleteMovieById() throws Exception {
+        when(movieService.deleteById(anyLong())).thenReturn(true);
+        mvc.perform(delete("/api/movies/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").value(true));
     }
 }

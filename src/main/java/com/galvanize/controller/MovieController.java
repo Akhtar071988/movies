@@ -39,4 +39,14 @@ public class MovieController {
     public Movie getAllMoviesByTitle(@PathVariable String title){
         return movieService.findAllMoviesByTitle(title);
     }
+
+//    @PatchMapping("/{rating}")
+//    public Movie updateMovieWithStarRating(@PathVariable int rating, @RequestBody Movie updateMovieWithStarRating){
+//        return movieService.updateMovieWithStarRating(rating, updateMovieWithStarRating);
+//    }
+
+    @DeleteMapping("/{id}")
+    public boolean updateMovie(@PathVariable long id){
+        return movieService.deleteById(id);
+    }
 }
