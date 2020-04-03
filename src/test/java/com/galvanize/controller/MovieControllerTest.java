@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.galvanize.entity.Movie;
 import com.galvanize.service.MovieService;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -91,22 +90,22 @@ public class MovieControllerTest {
                 .andExpect(jsonPath("$.movieId").value(expected.getMovieId()));
     }
 
-//    @Test
-//    public void updateMovieWithStarRating() throws Exception {
-//        Movie expected = new Movie();
-//        expected.setMovieId(1L);
-//        String json = objectMapper.writeValueAsString(expected);
-//        when(movieService.updateMovieWithStarRating(anyInt()).thenReturn(expected));
-//        mvc.perform(patch("/api/movies/1").content(json).contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$").value(expected));
-//    }
-
     @Test
     public void deleteMovieById() throws Exception {
         when(movieService.deleteById(anyLong())).thenReturn(true);
         mvc.perform(delete("/api/movies/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").value(true));
+    }
+
+    @Test
+    public void updateMovie() throws Exception {
+        Movie expected = new Movie();
+        expected.setMovieId(1L);
+        String json = objectMapper.writeValueAsString(expected);
+        when(movieService.updateMovieWithStarRating(anyLong(), anyInt())).thenReturn(expected);
+        mvc.perform(patch("/api/movies/1").content(json).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").value(expected));
     }
 }

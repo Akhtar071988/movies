@@ -40,13 +40,13 @@ public class MovieController {
         return movieService.findAllMoviesByTitle(title);
     }
 
-//    @PatchMapping("/{rating}")
-//    public Movie updateMovieWithStarRating(@PathVariable int rating, @RequestBody Movie updateMovieWithStarRating){
-//        return movieService.updateMovieWithStarRating(rating, updateMovieWithStarRating);
-//    }
-
     @DeleteMapping("/{id}")
     public boolean updateMovie(@PathVariable long id){
         return movieService.deleteById(id);
+    }
+
+    @PatchMapping("/{movieId}")
+    public Movie updateMovie(@PathVariable long movieId, @RequestBody Integer rating){
+        return movieService.updateMovieWithStarRating(movieId, rating);
     }
 }
