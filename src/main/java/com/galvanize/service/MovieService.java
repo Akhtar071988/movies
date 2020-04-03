@@ -31,7 +31,7 @@ public class MovieService {
         return movieRepository.findAllMoviesByTitle(title);
     }
 
-    public Movie updateMovieWithStarRating(long movieId, Integer rating) {
+    public Movie updateMovieWithStarRating(long movieId, Movie rating) {
         Movie newMovie = updateMovieWithStarRating(movieId, rating);
         newMovie.update(newMovie);
         return  createMovie(newMovie);

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.galvanize.entity.Movie;
 import com.galvanize.service.MovieService;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -103,9 +104,9 @@ public class MovieControllerTest {
         Movie expected = new Movie();
         expected.setMovieId(1L);
         String json = objectMapper.writeValueAsString(expected);
-        when(movieService.updateMovieWithStarRating(anyLong(), anyInt())).thenReturn(expected);
-        mvc.perform(patch("/api/movies/1").content(json).contentType(MediaType.APPLICATION_JSON))
+        when(movieService.updateMovieWithStarRating(anyLong(), any(Movie.class))).thenReturn(expected);
+        mvc.perform(put("/api/movies/rating/1").content(json).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$").value(expected));
+                .andExpect(jsonPath("$.movieId").value(expected.getMovieId()));
     }
 }

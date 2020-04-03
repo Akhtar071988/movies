@@ -45,8 +45,13 @@ public class MovieController {
         return movieService.deleteById(id);
     }
 
-    @PatchMapping("/{movieId}")
-    public Movie updateMovie(@PathVariable long movieId, @RequestBody Integer rating){
-        return movieService.updateMovieWithStarRating(movieId, rating);
+    @PutMapping("/rating/{movieId}")
+    public Movie updateMovieWithStarRating(@PathVariable long movieId, @RequestBody Movie movie){
+        return movieService.updateMovieWithStarRating(movieId, movie);
     }
+
+//    @PutMapping("/car/{id}")
+//    public Car updateCarById(@PathVariable Long id, @RequestBody Car car){
+//        return speedwayService.updateCarById(id, car);
+//    }
 }
