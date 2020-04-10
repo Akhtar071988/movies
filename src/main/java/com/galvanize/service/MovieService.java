@@ -27,6 +27,10 @@ public class MovieService {
         return movieRepository.findByImdbId(imdbId);
     }
 
+    //public Movie findTwoMoviesByImdbId(String imdbId) {
+    //    return movieRepository.findByImdbId(imdbId);
+    //}
+
     public Movie findAllMoviesByTitle(String title) {
         return movieRepository.findAllMoviesByTitle(title);
     }

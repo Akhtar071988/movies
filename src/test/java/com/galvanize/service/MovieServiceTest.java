@@ -49,6 +49,17 @@ public class MovieServiceTest {
         assertEquals(expected, movieService.findMovieByImdbId("tt0241527"));
     }
 
+//    //Edge case
+//    @Test
+//    public void getTwoMoviesByImdbId(){
+//        Movie expected = new Movie(1L, "tt0241527", "Emma Watson", "Chris Columbus", "Harry Potter and the Sorcerer's Stone", 2001, LocalDate.of(2001, 11, 16));
+//        Movie expected2 = new Movie(2L, "tt0295297", "Emma Watson", "Chris Columbus", "Harry Potter and the Chamber of Secrets", 2002, LocalDate.of(2002, 11, 15));
+//        when(movieRepository.findByImdbId(anyString())).thenReturn(expected);
+//        when(movieRepository.findByImdbId(anyString())).thenReturn(expected2);
+//        assertEquals(expected, movieService.findMovieByImdbId("tt0241527"));
+//        assertEquals(expected2, movieService.findMovieByImdbId("tt0295297"));
+//    }
+
     @Test
     public void getAllMoviesByTitle(){
         Movie expected = new Movie(1L, "tt0241527", "Emma Watson", "Chris Columbus", "Harry Potter and the Sorcerer's Stone", 2001, LocalDate.of(2001, 11, 16));

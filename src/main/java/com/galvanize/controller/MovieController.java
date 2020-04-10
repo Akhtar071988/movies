@@ -49,9 +49,4 @@ public class MovieController {
     public Movie updateMovieWithStarRating(@PathVariable long movieId, @RequestBody Movie movie){
         return movieService.updateMovieWithStarRating(movieId, movie);
     }
-
-//    @PutMapping("/car/{id}")
-//    public Car updateCarById(@PathVariable Long id, @RequestBody Car car){
-//        return speedwayService.updateCarById(id, car);
-//    }
 }

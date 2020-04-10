@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
     Movie findByImdbId(String imdbId);
+    //Movie findTwoMoviesByImdbId(String imdbId);
     Movie findAllMoviesByTitle(String title);
     boolean deleteById(long movieId);
 }
