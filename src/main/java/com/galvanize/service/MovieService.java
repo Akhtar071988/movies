@@ -35,11 +35,11 @@ public class MovieService {
         return movieRepository.findAllMoviesByTitle(title);
     }
 
-    public Movie updateMovieWithStarRating(long movieId, Movie rating) {
-        Movie newMovie = updateMovieWithStarRating(movieId, rating);
-        newMovie.update(newMovie);
-        return  createMovie(newMovie);
-    }
+//    public Movie updateMovieWithStarRating(long movieId, Movie rating) {
+//        Movie newMovie = updateMovieWithStarRating(movieId, rating);
+//        newMovie.update(newMovie);
+//        return  createMovie(newMovie);
+//    }
 
     public boolean deleteById (long movieId){
         return movieRepository.deleteById(movieId);

@@ -99,14 +99,14 @@ public class MovieControllerTest {
                 .andExpect(jsonPath("$").value(true));
     }
 
-    @Test
-    public void updateMovie() throws Exception {
-        Movie expected = new Movie();
-        expected.setMovieId(1L);
-        String json = objectMapper.writeValueAsString(expected);
-        when(movieService.updateMovieWithStarRating(anyLong(), any(Movie.class))).thenReturn(expected);
-        mvc.perform(put("/api/movies/rating/1").content(json).contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.movieId").value(expected.getMovieId()));
-    }
+//    @Test
+//    public void updateMovie() throws Exception {
+//        Movie expected = new Movie();
+//        expected.setMovieId(1L);
+//        String json = objectMapper.writeValueAsString(expected);
+//        when(movieService.updateMovieWithStarRating(anyLong(), any(Movie.class))).thenReturn(expected);
+//        mvc.perform(put("/api/movies/rating/1").content(json).contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$.movieId").value(expected.getMovieId()));
+//    }
 }

@@ -45,8 +45,8 @@ public class MovieController {
         return movieService.deleteById(id);
     }
 
-    @PutMapping("/rating/{movieId}")
-    public Movie updateMovieWithStarRating(@PathVariable long movieId, @RequestBody Movie movie){
-        return movieService.updateMovieWithStarRating(movieId, movie);
-    }
+//    @PutMapping("/rating/{movieId}")
+//    public Movie updateMovieWithStarRating(@PathVariable long movieId, @RequestBody Movie movie){
+//        return movieService.updateMovieWithStarRating(movieId, movie);
+//    }
 }
